@@ -1,6 +1,10 @@
 package com.kielblockdev.restapi.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -8,6 +12,10 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_CLIENTS")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClientModel implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -17,24 +25,4 @@ public class ClientModel implements Serializable {
     private UUID idClient;
     private String name;
     private String phone;
-
-    public UUID getIdClient() {
-        return idClient;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }
