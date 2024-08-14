@@ -28,10 +28,6 @@ public class ProductModel implements Serializable {
         return idProduct;
     }
 
-    public void setIdProduct(UUID idProduct) {
-        this.idProduct = idProduct;
-    }
-
     public String getName() {
         return name;
     }
