@@ -20,9 +20,7 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    //Method will receive a recordDTO as the request body - @RequestBody needed.
-    //@Valid is necessary, otherwise validations like @NotNull @NotBlank on DTO won't be taken into consideration.
-    public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDTO productRecordDTO) {
+    public ResponseEntity<ProductModel> saveProduct(ProductRecordDTO productRecordDTO) {
         //var allows us to not declare the instance type on the left side, the right side is enough
         var productModel = new ProductModel();
         /*
@@ -34,15 +32,13 @@ public class ProductService {
         return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(productModel));
     }
 
-    @GetMapping("/products")
     //ResponseEntity should be of type List<Model> as we will receive all data.
     public ResponseEntity<List<ProductModel>> getAllProducts() {
         return ResponseEntity.status(HttpStatus.OK).body(productRepository.findAll());
     }
 
-    @GetMapping("/products/{id}")
-    //ResponseEntity type Object as we will hae two returns with differente types.
-    public ResponseEntity<Object> getOneProduct(@PathVariable(name = "id") UUID id) {
+    //ResponseEntity type Object as we will have two returns with differente types.
+    public ResponseEntity<Object> getOneProduct(UUID id) {
         //Being a model needs to be optional as we may not find the product.
         Optional<ProductModel> productO = productRepository.findById(id); //Tries to find it by ID using JPA repository
         if(productO.isEmpty()) {
@@ -53,9 +49,7 @@ public class ProductService {
         return  ResponseEntity.status(HttpStatus.OK).body(productO.get());
     }
 
-    @PutMapping("/products/{id}")
-    public ResponseEntity<Object> updateProduct(@PathVariable(value = "id") UUID id,
-                                                @RequestBody @Valid ProductRecordDTO productRecordDTO) {
+    public ResponseEntity<Object> updateProduct(UUID id, ProductRecordDTO productRecordDTO) {
         //Checks if the product exists than saves to DB.
         Optional<ProductModel> productO = productRepository.findById(id);
         if(productO.isEmpty()) {
@@ -66,8 +60,7 @@ public class ProductService {
         return ResponseEntity.status(HttpStatus.OK).body(productRepository.save(productModel));
     }
 
-    @DeleteMapping("/products/{id}")
-    public ResponseEntity<Object> deleteProduct(@PathVariable(value = "id") UUID id) {
+    public ResponseEntity<Object> deleteProduct(UUID id) {
         Optional<ProductModel> productO = productRepository.findById(id);
         if(productO.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found");

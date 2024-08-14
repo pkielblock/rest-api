@@ -17,6 +17,8 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    //Method will receive a recordDTO as the request body - @RequestBody needed.
+    //@Valid is necessary, otherwise validations like @NotNull @NotBlank on DTO won't be taken into consideration.
     @PostMapping("/products")
     public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDTO productRecordDTO) {
         return productService.saveProduct(productRecordDTO);
