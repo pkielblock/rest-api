@@ -12,6 +12,7 @@ Stack Used:
 ## Improvements
  - [X] Create more Endpoints
  - [X] Use Lombok
+ - [X] Implement Flyway Migrations
  - [ ] Implement Swagger
  - [ ] Implement JWT
  - [ ] Implement Tests
