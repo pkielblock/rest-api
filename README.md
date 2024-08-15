@@ -10,8 +10,8 @@ Stack Used:
 - PostgreSQL
 
 ## Improvements
- - [ ] Create more Endpoints
- - [ ] Use Lombok
+ - [X] Create more Endpoints
+ - [X] Use Lombok
  - [ ] Implement Swagger
  - [ ] Implement JWT
  - [ ] Implement Tests
