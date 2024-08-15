@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_PRODUCTS")
+@Table(name = "tb_products")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,7 +28,7 @@ public class ProductModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idProduct;
+    private UUID id;
     private String name;
     private BigDecimal value;
 }

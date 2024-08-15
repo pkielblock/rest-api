@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_CLIENTS")
+@Table(name = "tb_clients")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,7 +22,7 @@ public class ClientModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idClient;
+    private UUID id;
     private String name;
     private String phone;
 }
