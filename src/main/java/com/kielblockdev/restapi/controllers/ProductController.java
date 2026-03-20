@@ -31,11 +31,12 @@ public class ProductController {
 
     @GetMapping("/products/{id}")
     public ResponseEntity<Object> getOneProduct(@PathVariable(name = "id") UUID id) {
-        return  productService.getOneProduct(id);
+        return productService.getOneProduct(id);
     }
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<Object> updateProduct(@PathVariable(value = "id") UUID id, @RequestBody @Valid ProductRecordDTO productRecordDTO) {
+    public ResponseEntity<Object> updateProduct(@PathVariable(value = "id") UUID id,
+                                                @RequestBody @Valid ProductRecordDTO productRecordDTO) {
         return productService.updateProduct(id, productRecordDTO);
     }
 
